@@ -2,6 +2,16 @@
           MYSTERY OF SILVER
               MOUNTAIN
 ========================================
+
+
+GOOD LUCK ON YOUR QUEST!. YOU ARE AT A
+CROSSROADS AND YOU CAN GO E,W,
+
+========================================
+
+
+WHAT WILL YOU DO NOW 
+?
 ```
 
 This is a Go implementation of The Mystery of Silver Mountain, a text adventure game published by Usborne Publishing in 1984. It was published in a book in the form of terse BASIC code that you had to type out and save to tape or disc before being able to play. Obfuscation in the code helped avoid the player from knowing too much about the game before playing. 

@@ -1496,7 +1496,7 @@ label_650:
 	PRINT("")
 	PRINT("BUT YOU ARE GRANTED ANOTHER TRY")
 	GOSUB_3360()
-	goto label_run //RUN() ???
+	goto label_run
 	// 730
 label_730:
 	GOSUB_4400()

@@ -297,7 +297,7 @@ label_30:
 		J_ = J_ + " A PONY,"
 	}
 	if R == 64 {
-		J_ = J_ + "A HERMIT,"
+		J_ = J_ + " A HERMIT,"
 	}
 	if R == 18 && E_[18] == "N" {
 		J_ = J_ + " AN OAK DOOR,"
@@ -795,7 +795,7 @@ label_540:
 	}
 	GOSUB_2470 := func() {
 		if B == 7 || B == 18 {
-			R_ = "THWACk!"
+			R_ = "THWACK!"
 		}
 		if H == 5818 {
 			R_ = "YOU CLEARED THE WEBS"

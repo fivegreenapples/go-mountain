@@ -29,3 +29,10 @@ cd go-mountain
 go build -o silver-mountain
 ./silver-mountain
 ```
+
+For Windows users:
+
+```
+go build -o silver-mountain.exe
+silver-mountain
+```

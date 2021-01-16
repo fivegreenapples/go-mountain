@@ -6,6 +6,8 @@ import (
 	"log"
 	"math/rand"
 	"os"
+	"os/exec"
+	"runtime"
 	"strconv"
 	"strings"
 	"unicode/utf8"
@@ -79,7 +81,13 @@ func TAB(val int) {
 
 func CLS() {
 	// see https://stackoverflow.com/a/22892171
-	fmt.Print("\033[H\033[2J")
+	if runtime.GOOS == "windows" {
+		cmd := exec.Command("cmd", "/c", "cls")
+        cmd.Stdout = os.Stdout
+        cmd.Run()
+	} else {
+		fmt.Print("\033[H\033[2J")
+	}
 }
 
 // RND1 implements RND(1)

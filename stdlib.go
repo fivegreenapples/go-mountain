@@ -83,8 +83,8 @@ func CLS() {
 	// see https://stackoverflow.com/a/22892171
 	if runtime.GOOS == "windows" {
 		cmd := exec.Command("cmd", "/c", "cls")
-        cmd.Stdout = os.Stdout
-        cmd.Run()
+		cmd.Stdout = os.Stdout
+		cmd.Run()
 	} else {
 		fmt.Print("\033[H\033[2J")
 	}

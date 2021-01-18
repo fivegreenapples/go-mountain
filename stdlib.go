@@ -137,7 +137,8 @@ func INPUT_DISC_NUMERIC(r io.Reader) int {
 
 func INPUT() string {
 	fmt.Print("?")
-	return INPUT_DISC(os.Stdin)
+	// ToUpper just saves hassle for typing inputs
+	return strings.ToUpper(INPUT_DISC(STDIN))
 }
 
 func INPUT_NUMERIC() int {

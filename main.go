@@ -1,13 +1,44 @@
 package main
 
 import (
+	"bytes"
+	"fmt"
+	"io"
+	"io/ioutil"
 	"math/rand"
+	"os"
 	"time"
 )
 
+var STDIN io.Reader
+
 func main() {
 
+	STDIN = os.Stdin
+
+	var initialCommands []byte
+	if len(os.Args) > 1 {
+		commandFile := os.Args[1]
+		cfh, err := os.Open(commandFile)
+		if err != nil {
+			fmt.Printf("Error opening file: %s", err.Error())
+			os.Exit(1)
+		}
+		defer cfh.Close()
+		initialCommands, err = ioutil.ReadAll(cfh)
+		if err != nil {
+			fmt.Printf("Error reading file: %s", err.Error())
+			os.Exit(1)
+		}
+		// close now so we don't leave it open for a potentially long game run
+		cfh.Close()
+	}
+
 label_run:
+	if len(initialCommands) > 0 {
+		STDIN = io.MultiReader(bytes.NewReader(initialCommands), STDIN)
+	}
+
 	rand.Seed(time.Now().UnixNano())
 
 	DATA_POINTER := 0
@@ -40,7 +71,7 @@ label_run:
 		"11MOSAIC-FLOORED HALL", "12SILVER THRONE ROOM",
 		"12MIDDLE OF THE LAKE", "42EDGE OF AN ICY LAKE",
 		"41PITTED TRACK", "41HIGH PINNACLE",
-		"55ABOVE A GALCIER", "21HUGE FALLEN OAK",
+		"55ABOVE A GLACIER", "21HUGE FALLEN OAK",
 		"11TURRET ROOOM WITH A SLOT MACHINE", "11COBWEBBY ROOM",
 		"31SAFE IN OGBAN's CHAMBER", "31CUPBOARD IN A CORNER",
 		"11NARROW PASSAGE", "16CAVE",
@@ -650,6 +681,11 @@ label_540:
 		if H == 4337 {
 			VB = 2
 			GOSUB_800()
+			return
+		}
+		if R == 36 {
+			R_ = "YOU FOUND SOMETHING"
+			F[13] = 0
 		}
 	}
 	GOSUB_1290 := func() {

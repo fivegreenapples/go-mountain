@@ -4,6 +4,10 @@
 # build products
 go-mountain
 silver-mountain
+silver-mountain.exe
 
 # pdf copy of the book, not allowed to be distributed
 the-mystery-of-silver-mountain.pdf
+
+# save files
+*.save

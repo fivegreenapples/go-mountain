@@ -174,7 +174,7 @@ label_run:
 		R = 77
 		R_ = "GOOD LUCK ON YOUR QUEST!"
 		G_[1] = ""
-		for I := 1; I < 8; I++ {
+		for I := 1; I <= 8; I++ {
 			// 4520
 			F_ := MID_(B_, 1+INT(RND_1()*4)*3, 1)
 			G_[1] += F_

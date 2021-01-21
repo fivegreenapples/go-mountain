@@ -7,6 +7,7 @@ import (
 	"io/ioutil"
 	"math/rand"
 	"os"
+	"strconv"
 	"time"
 )
 
@@ -15,6 +16,7 @@ var STDIN io.Reader
 func main() {
 
 	STDIN = os.Stdin
+	SEED := time.Now().UnixNano()
 
 	var initialCommands []byte
 	if len(os.Args) > 1 {
@@ -33,13 +35,22 @@ func main() {
 		// close now so we don't leave it open for a potentially long game run
 		cfh.Close()
 	}
+	if len(os.Args) > 2 {
+		seedArg := os.Args[2]
+		seed, seedErr := strconv.Atoi(seedArg)
+		if seedErr != nil {
+			fmt.Printf("Error parsing randomg number seed: %s", seedErr.Error())
+			os.Exit(2)
+		}
+		SEED = int64(seed)
+	}
 
 label_run:
 	if len(initialCommands) > 0 {
 		STDIN = io.MultiReader(bytes.NewReader(initialCommands), STDIN)
 	}
 
-	rand.Seed(time.Now().UnixNano())
+	rand.Seed(SEED)
 
 	DATA_POINTER := 0
 	DATA := []string{

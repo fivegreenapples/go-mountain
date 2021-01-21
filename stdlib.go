@@ -117,6 +117,7 @@ func CLOSE(fh *os.File) {
 func INPUT_DISC(r io.Reader) string {
 	var val string
 	buf := make([]byte, 1)
+	discard := false
 	for {
 		n, err := r.Read(buf)
 		if n != 1 || err != nil {
@@ -128,11 +129,19 @@ func INPUT_DISC(r io.Reader) string {
 			break
 		}
 
-		if buf[0] == '\r' {
+		if buf[0] == '#' && val == "" {
+			discard = true
 			continue
 		}
 		if buf[0] == '\n' {
+			if discard {
+				discard = false
+				continue
+			}
 			break
+		}
+		if discard || buf[0] == '\r' {
+			continue
 		}
 		val += string(buf[0])
 	}

@@ -47,7 +47,9 @@ For example, the `SAVE GAME` and `CONTINUE A SAVED GAME` operations both require
 
    This just means there is a `strings.ToUpper(...)` wrapping any input as the BASIC only understands UPPERCASE COMMANDS.
 
-2. You can write a sequence of newline separated commands into a file and have the program run these before accepting manual input from STDIN. Just specify the filename as the first command line argument to the program:
+2. You can specify a commands file.
+
+    By writing a sequence of newline separated commands into a file, you can have the program run these before accepting manual input from STDIN. Specify the filename as the first command line argument to the program:
 
     ```
     ./silver-mountain commands.txt
@@ -55,7 +57,9 @@ For example, the `SAVE GAME` and `CONTINUE A SAVED GAME` operations both require
 
     You can also comment your command file. Any line starting with a `#` will be ignored.
 
-3. You can seed the RNG. Some elements of the game are generated at game start using a random number generator. If you use a command file as above, you'll want to seed the RNG so that these game elements are predictable. Use a second command line argument:
+3. You can seed the RNG.
+
+    Some elements of the game are generated at game start using a random number generator. If you use a command file as above, you'll want to seed the RNG so these game elements are predictable. Use a second command line argument:
 
     ```
     ./silver-mountain commands.txt 123

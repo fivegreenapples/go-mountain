@@ -11,3 +11,6 @@ the-mystery-of-silver-mountain.pdf
 
 # save files
 *.save
+
+# local solution folder
+solution
